@@ -11,6 +11,8 @@
 
 using namespace std;
 
+//Stack theStack;
+
 Fl_Box *box;
 
 string glblStr="";
@@ -138,7 +140,12 @@ void bexpcb(Fl_Widget *w, void *) {
   w->copy_label("check");
 }
 void brescb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  box->copy_label(".0");
+  glblStr="";
+  glblFlt=0.0;
+  isFlt=false;
+  decCount=0;
+  //theStack.clear()
 }
 void bpluscb(Fl_Widget *w, void *) {
   w->copy_label("check");
@@ -153,13 +160,23 @@ void bdivcb(Fl_Widget *w, void *) {
   w->copy_label("check");
 }
 void bentrcb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  //theStack.push(glblFlt);
+  glblStr="";
+  glblFlt=0.0;
+  isFlt=false;
+  decCount=0;
 }
 void bdpcb(Fl_Widget *w, void *) {
   w->copy_label("check");
 }
 void bpmcb(Fl_Widget *w, void *) {
   w->copy_label("check");
+}
+
+void bdeccb(Fl_Widget *w, void *) {
+  glblStr += ".";
+  box->copy_label(glblStr.c_str());
+  isFlt=true;
 }
 
 
@@ -207,8 +224,10 @@ int main(int argc, char ** argv) {
   bentr->callback(bentrcb,0);
   Fl_Button *bdp = new Fl_Button(210, 550, 100, 100, "drop");
   bdp->callback(bdpcb,0);
-  Fl_Button *bpm = new Fl_Button(110, 550, 100, 100, "+/-");
+  Fl_Button *bpm = new Fl_Button(110, 550, 100, 50, "+/-");
   bpm->callback(bpmcb,0);
+  Fl_Button *bdec = new Fl_Button(110, 600, 100, 50, ".");
+  bdec->callback(bdeccb,0);
   window->end();
   window->show(argc,argv);
   return Fl::run();
