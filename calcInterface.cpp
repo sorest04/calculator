@@ -7,39 +7,129 @@
 #include <FL/Fl_Button.H>
 #include <FL/fl_ask.H>
 #include <string>
+#include <math.h>
 
+using namespace std;
+
+Fl_Box *box;
+
+string glblStr="";
+float glblFlt=0.0;
+
+bool isFlt=false;
+int decCount=0;
 
 
 
 void b1cb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  glblStr+="1";
+  box->copy_label(glblStr.c_str());
+  if(isFlt){
+    decCount++;
+    glblFlt+= 1/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10+1;
+  }
 }
 void b2cb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  glblStr+="2";
+  box->copy_label(glblStr.c_str());
+  if(isFlt){
+    decCount++;
+    glblFlt+= 2/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10+2;
+  }
 }
 void b3cb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  glblStr+="3";
+  box->copy_label(glblStr.c_str());
+  if(isFlt){
+    decCount++;
+    glblFlt+= 3/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10+3;
+  }
 }
+  
 void b4cb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+ glblStr+="4";
+  box->copy_label(glblStr.c_str());
+  if(isFlt){
+    decCount++;
+    glblFlt+= 4/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10+4;
+  }
 }
 void b5cb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  glblStr+="5";
+  box->copy_label(glblStr.c_str());
+  if(isFlt){
+    decCount++;
+    glblFlt+= 5/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10+5;
+  }
 }
 void b6cb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  glblStr+="6";
+  box->copy_label(glblStr.c_str());
+  if(isFlt){
+    decCount++;
+    glblFlt+= 6/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10+6;
+  }
 }
 void b7cb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  glblStr+="7";
+  box->copy_label(glblStr.c_str());
+  if(isFlt){
+    decCount++;
+    glblFlt+= 7/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10+7;
+  }
 }
 void b8cb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  glblStr+="8";
+  box->copy_label(glblStr.c_str());
+  if(isFlt){
+    decCount++;
+    glblFlt+= 8/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10+8;
+  }
 }
 void b9cb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+ glblStr+="9";
+  box->copy_label(glblStr.c_str());
+  if(isFlt){
+    decCount++;
+    glblFlt+= 9/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10+9;
+  }
 }
 void b0cb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  glblStr+="0";
+  box->copy_label(glblStr.c_str());
+  if(isFlt){
+    decCount++;
+  }
+  else{
+    glblFlt = glblFlt*10;
+  }
 }
 void bsqrtcb(Fl_Widget *w, void *) {
   w->copy_label("check");
@@ -76,7 +166,7 @@ void bpmcb(Fl_Widget *w, void *) {
 
 int main(int argc, char ** argv) {
   Fl_Window *window = new Fl_Window(420,660);
-  Fl_Box *box = new Fl_Box(10,25,400,100,"NUMBERS!!!");
+  box = new Fl_Box(10,25,400,100,".0");
   box->box(FL_DOWN_BOX);
   box->labelsize(36);
   Fl_Button *b1 = new Fl_Button(10, 250, 100, 100, "1");
