@@ -8,6 +8,7 @@
 #include <FL/fl_ask.H>
 #include <string>
 #include <math.h>
+#include "stack.h"
 
 using namespace std;
 
@@ -15,10 +16,10 @@ Fl_Box *box;
 
 string glblStr="";
 float glblFlt=0.0;
-
+Stack s;
 bool isFlt=false;
 int decCount=0;
-
+float res,fir,sec;
 
 
 void b1cb(Fl_Widget *w, void *) {
@@ -141,7 +142,14 @@ void brescb(Fl_Widget *w, void *) {
   w->copy_label("check");
 }
 void bpluscb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  res=0;
+  sec=s.pop();
+  fir=s.pop();
+  res = fir + sec;
+  box->copy_label(to_string(res).c_str());
+  s.push(res);
+  decCount = 0;
+  isFlt = false;
 }
 void bmincb(Fl_Widget *w, void *) {
   w->copy_label("check");
@@ -153,7 +161,9 @@ void bdivcb(Fl_Widget *w, void *) {
   w->copy_label("check");
 }
 void bentrcb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  s.push(glblFlt);
+  decCount = 0;
+  isFlt = false;  
 }
 void bdpcb(Fl_Widget *w, void *) {
   w->copy_label("check");
