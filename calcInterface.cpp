@@ -21,11 +21,13 @@ Stack s;
 bool isFlt=false;
 int decCount=0;
 float res,fir,sec;
+bool isNeg=false;
 
 
 void b1cb(Fl_Widget *w, void *) {
   glblStr+="1";
   box->copy_label(glblStr.c_str());
+  if(!isNeg){
   if(isFlt){
     decCount++;
     glblFlt+= 1/(pow(10,decCount));
@@ -33,10 +35,20 @@ void b1cb(Fl_Widget *w, void *) {
   else{
     glblFlt = glblFlt*10+1;
   }
+  } else{
+   if(isFlt){
+    decCount++;
+    glblFlt-= 1/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10-1;
+  }
+  }
 }
 void b2cb(Fl_Widget *w, void *) {
   glblStr+="2";
   box->copy_label(glblStr.c_str());
+  if(!isNeg){
   if(isFlt){
     decCount++;
     glblFlt+= 2/(pow(10,decCount));
@@ -44,10 +56,20 @@ void b2cb(Fl_Widget *w, void *) {
   else{
     glblFlt = glblFlt*10+2;
   }
+  } else{
+   if(isFlt){
+    decCount++;
+    glblFlt-= 2/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10-2;
+  }
+  } 
 }
 void b3cb(Fl_Widget *w, void *) {
   glblStr+="3";
   box->copy_label(glblStr.c_str());
+  if(!isNeg){
   if(isFlt){
     decCount++;
     glblFlt+= 3/(pow(10,decCount));
@@ -55,11 +77,21 @@ void b3cb(Fl_Widget *w, void *) {
   else{
     glblFlt = glblFlt*10+3;
   }
+  } else{
+   if(isFlt){
+    decCount++;
+    glblFlt-= 3/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10-3;
+  }
+  }
 }
   
 void b4cb(Fl_Widget *w, void *) {
- glblStr+="4";
+  glblStr+="4";
   box->copy_label(glblStr.c_str());
+  if(!isNeg){
   if(isFlt){
     decCount++;
     glblFlt+= 4/(pow(10,decCount));
@@ -67,10 +99,20 @@ void b4cb(Fl_Widget *w, void *) {
   else{
     glblFlt = glblFlt*10+4;
   }
+  } else{
+   if(isFlt){
+    decCount++;
+    glblFlt-= 4/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10-4;
+  }
+  }
 }
 void b5cb(Fl_Widget *w, void *) {
   glblStr+="5";
   box->copy_label(glblStr.c_str());
+  if(!isNeg){
   if(isFlt){
     decCount++;
     glblFlt+= 5/(pow(10,decCount));
@@ -78,10 +120,20 @@ void b5cb(Fl_Widget *w, void *) {
   else{
     glblFlt = glblFlt*10+5;
   }
+  } else{
+   if(isFlt){
+    decCount++;
+    glblFlt-= 5/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10-5;
+  }
+  }
 }
 void b6cb(Fl_Widget *w, void *) {
   glblStr+="6";
   box->copy_label(glblStr.c_str());
+  if(!isNeg){
   if(isFlt){
     decCount++;
     glblFlt+= 6/(pow(10,decCount));
@@ -89,10 +141,20 @@ void b6cb(Fl_Widget *w, void *) {
   else{
     glblFlt = glblFlt*10+6;
   }
+  } else{
+   if(isFlt){
+    decCount++;
+    glblFlt-= 6/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10-6;
+  }
+  }
 }
 void b7cb(Fl_Widget *w, void *) {
   glblStr+="7";
   box->copy_label(glblStr.c_str());
+  if(!isNeg){
   if(isFlt){
     decCount++;
     glblFlt+= 7/(pow(10,decCount));
@@ -100,10 +162,20 @@ void b7cb(Fl_Widget *w, void *) {
   else{
     glblFlt = glblFlt*10+7;
   }
+  } else{
+   if(isFlt){
+    decCount++;
+    glblFlt-= 7/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10-7;
+  }
+  }
 }
 void b8cb(Fl_Widget *w, void *) {
   glblStr+="8";
   box->copy_label(glblStr.c_str());
+  if(!isNeg){
   if(isFlt){
     decCount++;
     glblFlt+= 8/(pow(10,decCount));
@@ -111,10 +183,20 @@ void b8cb(Fl_Widget *w, void *) {
   else{
     glblFlt = glblFlt*10+8;
   }
+  } else{
+   if(isFlt){
+    decCount++;
+    glblFlt-= 8/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10-8;
+  }
+  }
 }
 void b9cb(Fl_Widget *w, void *) {
- glblStr+="9";
+  glblStr+="9";
   box->copy_label(glblStr.c_str());
+  if(!isNeg){
   if(isFlt){
     decCount++;
     glblFlt+= 9/(pow(10,decCount));
@@ -122,18 +204,48 @@ void b9cb(Fl_Widget *w, void *) {
   else{
     glblFlt = glblFlt*10+9;
   }
+  } else{
+   if(isFlt){
+    decCount++;
+    glblFlt-= 9/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10-9;
+  }
+  }
 }
 void b0cb(Fl_Widget *w, void *) {
   glblStr+="0";
   box->copy_label(glblStr.c_str());
+  if(!isNeg){
   if(isFlt){
     decCount++;
+    glblFlt+= 0/(pow(10,decCount));
   }
   else{
-    glblFlt = glblFlt*10;
+    glblFlt = glblFlt*10+0;
+  }
+  } else{
+   if(isFlt){
+    decCount++;
+    glblFlt-= 0/(pow(10,decCount));
+  }
+  else{
+    glblFlt = glblFlt*10-0;
+  }
   }
 }
+void bentrcb(Fl_Widget *w, void *) {
+  s.push(glblFlt);
+  decCount = 0;
+  isFlt = false;
+  glblFlt = 0.0;
+  glblStr = "";
+  sBox->copy_label(s.getBack().c_str());
+  isNeg = false;
+}
 void bsqrtcb(Fl_Widget *w, void *) {
+  bentrcb(box,0);
   fir=s.pop();
   res=pow(fir,0.5);
   box->copy_label(to_string(res).c_str());
@@ -143,6 +255,7 @@ void bsqrtcb(Fl_Widget *w, void *) {
   sBox->copy_label(s.getBack().c_str());
 }
 void bexpcb(Fl_Widget *w, void *) {
+  bentrcb(box,0);
   sec=s.pop();
   fir=s.pop();
   res=pow(fir,sec);
@@ -160,8 +273,10 @@ void brescb(Fl_Widget *w, void *) {
   decCount=0;
   isFlt=false;
   sBox->copy_label("stack");
+  isNeg=false;
 }
 void bpluscb(Fl_Widget *w, void *) {
+  bentrcb(box,0);
   sec=s.pop();
   fir=s.pop();
   res = fir + sec;
@@ -172,6 +287,7 @@ void bpluscb(Fl_Widget *w, void *) {
   sBox->copy_label(s.getBack().c_str());
 }
 void bmincb(Fl_Widget *w, void *) {
+  bentrcb(box,0); 
   sec=s.pop();
   fir=s.pop();
   res = fir-sec;
@@ -182,6 +298,7 @@ void bmincb(Fl_Widget *w, void *) {
   sBox->copy_label(s.getBack().c_str());
 }
 void bmulcb(Fl_Widget *w, void *) {
+  bentrcb(box,0);
   sec=s.pop();
   fir=s.pop();
   res=fir*sec;
@@ -192,6 +309,7 @@ void bmulcb(Fl_Widget *w, void *) {
   sBox->copy_label(s.getBack().c_str());
 }
 void bdivcb(Fl_Widget *w, void *) {
+  bentrcb(box,0);
   sec=s.pop();
   fir=s.pop();
   res=fir/sec;
@@ -201,25 +319,27 @@ void bdivcb(Fl_Widget *w, void *) {
   isFlt=false;
   sBox->copy_label(s.getBack().c_str());
 }
-void bentrcb(Fl_Widget *w, void *) {
-  s.push(glblFlt);
-  decCount = 0;
-  isFlt = false;
-  glblFlt = 0.0;
-  glblStr = "";
-  sBox->copy_label(s.getBack().c_str());
-}
+
 void bdpcb(Fl_Widget *w, void *) {
   s.pop();
   box->copy_label(to_string(s.peak()).c_str());
   sBox->copy_label(s.getBack().c_str());
 }
 void bpmcb(Fl_Widget *w, void *) {
-  fir = s.pop();
-  res = fir *-1;
-  box->copy_label(to_string(res).c_str());
-  s.push(res);
-  sBox->copy_label(s.getBack().c_str());
+  glblFlt = glblFlt * -1;
+  if(!isNeg){
+    glblStr = "-"+glblStr;
+  }
+  else{
+    glblStr = glblStr.substr(1,glblStr.size());
+  }
+  box->copy_label(glblStr.c_str());
+  if(isNeg) {
+    isNeg=false;
+  }
+  else{
+    isNeg=true;
+  }
 }
 void bdeccb(Fl_Widget *w, void *) {
   glblStr+=".";
@@ -230,10 +350,10 @@ void bdeccb(Fl_Widget *w, void *) {
 
 int main(int argc, char ** argv) {
   Fl_Window *window = new Fl_Window(420,660);
-  box = new Fl_Box(10,25,400,100,"-");
+  box = new Fl_Box(10,25,400,100,"Top of Stack");
   box->box(FL_DOWN_BOX);
   box->labelsize(36);
-  sBox = new Fl_Box(10,0,400,25,"stack");
+  sBox = new Fl_Box(10,0,400,25,"Rest of Stack");
   sBox->box(FL_DOWN_BOX);
   Fl_Button *b1 = new Fl_Button(10, 250, 100, 100, "1");
   b1->callback(b1cb,0);
