@@ -13,6 +13,7 @@
 using namespace std;
 
 Fl_Box *box;
+Fl_Box *sBox;
 
 string glblStr="";
 float glblFlt=0.0;
@@ -133,16 +134,34 @@ void b0cb(Fl_Widget *w, void *) {
   }
 }
 void bsqrtcb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  fir=s.pop();
+  res=pow(fir,0.5);
+  box->copy_label(to_string(res).c_str());
+  s.push(res);
+  decCount=0;
+  isFlt=false;
+  sBox->copy_label(s.getBack().c_str());
 }
 void bexpcb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  sec=s.pop();
+  fir=s.pop();
+  res=pow(fir,sec);
+  box->copy_label(to_string(res).c_str());
+  s.push(res);
+  decCount=0;
+  isFlt=false;
+  sBox->copy_label(s.getBack().c_str());
 }
 void brescb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  s.clear();
+  box->copy_label("-");
+  glblStr="";
+  glblFlt=0.0;
+  decCount=0;
+  isFlt=false;
+  sBox->copy_label("stack");
 }
 void bpluscb(Fl_Widget *w, void *) {
-  res=0;
   sec=s.pop();
   fir=s.pop();
   res = fir + sec;
@@ -150,35 +169,72 @@ void bpluscb(Fl_Widget *w, void *) {
   s.push(res);
   decCount = 0;
   isFlt = false;
+  sBox->copy_label(s.getBack().c_str());
 }
 void bmincb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  sec=s.pop();
+  fir=s.pop();
+  res = fir-sec;
+  box->copy_label(to_string(res).c_str());
+  s.push(res);
+  decCount = 0;
+  isFlt = false;
+  sBox->copy_label(s.getBack().c_str());
 }
 void bmulcb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  sec=s.pop();
+  fir=s.pop();
+  res=fir*sec;
+  box->copy_label(to_string(res).c_str());
+  s.push(res);
+  decCount = 0;
+  isFlt = false;
+  sBox->copy_label(s.getBack().c_str());
 }
 void bdivcb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  sec=s.pop();
+  fir=s.pop();
+  res=fir/sec;
+  box->copy_label(to_string(res).c_str());
+  s.push(res);
+  decCount=0;
+  isFlt=false;
+  sBox->copy_label(s.getBack().c_str());
 }
 void bentrcb(Fl_Widget *w, void *) {
   s.push(glblFlt);
   decCount = 0;
-  isFlt = false;  
+  isFlt = false;
+  glblFlt = 0.0;
+  glblStr = "";
+  sBox->copy_label(s.getBack().c_str());
 }
 void bdpcb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  s.pop();
+  box->copy_label(to_string(s.peak()).c_str());
+  sBox->copy_label(s.getBack().c_str());
 }
 void bpmcb(Fl_Widget *w, void *) {
-  w->copy_label("check");
+  fir = s.pop();
+  res = fir *-1;
+  box->copy_label(to_string(res).c_str());
+  s.push(res);
+  sBox->copy_label(s.getBack().c_str());
 }
-
+void bdeccb(Fl_Widget *w, void *) {
+  glblStr+=".";
+  box->copy_label(glblStr.c_str());
+  isFlt=true;
+}
 
 
 int main(int argc, char ** argv) {
   Fl_Window *window = new Fl_Window(420,660);
-  box = new Fl_Box(10,25,400,100,".0");
+  box = new Fl_Box(10,25,400,100,"-");
   box->box(FL_DOWN_BOX);
   box->labelsize(36);
+  sBox = new Fl_Box(10,0,400,25,"stack");
+  sBox->box(FL_DOWN_BOX);
   Fl_Button *b1 = new Fl_Button(10, 250, 100, 100, "1");
   b1->callback(b1cb,0);
   Fl_Button *b2 = new Fl_Button(110, 250, 100, 100, "2");
@@ -217,8 +273,10 @@ int main(int argc, char ** argv) {
   bentr->callback(bentrcb,0);
   Fl_Button *bdp = new Fl_Button(210, 550, 100, 100, "drop");
   bdp->callback(bdpcb,0);
-  Fl_Button *bpm = new Fl_Button(110, 550, 100, 100, "+/-");
+  Fl_Button *bpm = new Fl_Button(110, 550, 100, 50, "+/-");
   bpm->callback(bpmcb,0);
+  Fl_Button *bdec = new Fl_Button(110, 600, 100,50, ".");
+  bdec->callback(bdeccb,0);
   window->end();
   window->show(argc,argv);
   return Fl::run();

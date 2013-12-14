@@ -17,12 +17,39 @@ float Stack::pop() {
   return flt;
 }
 
-/*
-void Stack::getString() {
-  string s;
-  for(int x=0;x<objs.size();x++){
-    s+=to_string(objs[x]);
-    s+=" ";
+float Stack::peak() {
+  return objs.back();
+}
+
+string Stack::getBack() {
+  vector<float> back;
+  int len;
+  int size = objs.size();
+  if(size<4) {
+    len = size;
   }
-  return s;
-  } */
+  else {
+    len = 4;
+  }
+  
+  for(int x=0;x<len;x++){
+    back.push_back(objs.back());
+    objs.pop_back();
+  }
+ 
+  string str ="";
+  for(int x=len-1;x>=0;x--){
+    str+=to_string(back[x]);
+    str+="  |  ";
+  }
+
+  for(int x=0;x<len;x++){
+    objs.push_back(back.back());
+    back.pop_back();
+  }
+  return str;
+}
+
+void Stack::clear() {
+  objs.clear();
+}

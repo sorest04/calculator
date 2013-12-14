@@ -1,6 +1,7 @@
 //Declaration of Stack class
 #include <iostream>
 #include <vector>
+#include <string>
 
 #ifndef STACK
 #define STACK
@@ -11,8 +12,11 @@ class Stack {
 
  public:
   Stack();
-  void push(flt);
+  void push(float);
   float pop();
+  float peak();
+  string getBack();
+  void clear();
 
  private:
   vector<float> objs;
