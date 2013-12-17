@@ -245,7 +245,7 @@ void bentrcb(Fl_Widget *w, void *) {
   isNeg = false;
 }
 void bsqrtcb(Fl_Widget *w, void *) {
-  bentrcb(box,0);
+  //bentrcb(box,0);
   fir=s.pop();
   res=pow(fir,0.5);
   box->copy_label(to_string(res).c_str());
@@ -255,7 +255,7 @@ void bsqrtcb(Fl_Widget *w, void *) {
   sBox->copy_label(s.getBack().c_str());
 }
 void bexpcb(Fl_Widget *w, void *) {
-  bentrcb(box,0);
+  //bentrcb(box,0);
   sec=s.pop();
   fir=s.pop();
   res=pow(fir,sec);
@@ -267,16 +267,16 @@ void bexpcb(Fl_Widget *w, void *) {
 }
 void brescb(Fl_Widget *w, void *) {
   s.clear();
-  box->copy_label("-");
+  box->copy_label("Display");
   glblStr="";
   glblFlt=0.0;
   decCount=0;
   isFlt=false;
-  sBox->copy_label("stack");
+  sBox->copy_label("Stack");
   isNeg=false;
 }
 void bpluscb(Fl_Widget *w, void *) {
-  bentrcb(box,0);
+  //bentrcb(box,0);
   sec=s.pop();
   fir=s.pop();
   res = fir + sec;
@@ -287,7 +287,7 @@ void bpluscb(Fl_Widget *w, void *) {
   sBox->copy_label(s.getBack().c_str());
 }
 void bmincb(Fl_Widget *w, void *) {
-  bentrcb(box,0); 
+  //bentrcb(box,0); 
   sec=s.pop();
   fir=s.pop();
   res = fir-sec;
@@ -298,7 +298,7 @@ void bmincb(Fl_Widget *w, void *) {
   sBox->copy_label(s.getBack().c_str());
 }
 void bmulcb(Fl_Widget *w, void *) {
-  bentrcb(box,0);
+  //bentrcb(box,0);
   sec=s.pop();
   fir=s.pop();
   res=fir*sec;
@@ -309,7 +309,7 @@ void bmulcb(Fl_Widget *w, void *) {
   sBox->copy_label(s.getBack().c_str());
 }
 void bdivcb(Fl_Widget *w, void *) {
-  bentrcb(box,0);
+  //bentrcb(box,0);
   sec=s.pop();
   fir=s.pop();
   res=fir/sec;
@@ -350,10 +350,10 @@ void bdeccb(Fl_Widget *w, void *) {
 
 int main(int argc, char ** argv) {
   Fl_Window *window = new Fl_Window(420,660);
-  box = new Fl_Box(10,25,400,100,"Top of Stack");
+  box = new Fl_Box(10,25,400,100,"Display (not on stack)");
   box->box(FL_DOWN_BOX);
   box->labelsize(36);
-  sBox = new Fl_Box(10,0,400,25,"Rest of Stack");
+  sBox = new Fl_Box(10,0,400,25,"Stack");
   sBox->box(FL_DOWN_BOX);
   Fl_Button *b1 = new Fl_Button(10, 250, 100, 100, "1");
   b1->callback(b1cb,0);
